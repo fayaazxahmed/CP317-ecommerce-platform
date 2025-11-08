@@ -181,8 +181,8 @@ public class AccountSystemUI {
         leftPanel.add(backBtn);
 
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
-        rightPanel.add(deleteBtn);
-        rightPanel.add(logoutBtn);
+        //rightPanel.add(deleteBtn);
+        //rightPanel.add(logoutBtn);
 
         topPanel.add(leftPanel, BorderLayout.WEST);
         topPanel.add(rightPanel, BorderLayout.EAST);
@@ -211,6 +211,16 @@ public class AccountSystemUI {
 
         dashFrame.setLocationRelativeTo(null);
         dashFrame.setVisible(true);
+
+        // NEW BUTTONS:
+        JButton cartBtn = new JButton("Cart");
+        cartBtn.setPreferredSize(new Dimension(200, 60));
+        cartBtn.addActionListener(e -> TestingUI.showCartItems());
+        rightPanel.add(cartBtn);
+
+        // RELOCATED BUTTONS:
+        testingPanel.add(deleteBtn);
+        testingPanel.add(logoutBtn);
     }
 
     public static void main(String[] args) {
