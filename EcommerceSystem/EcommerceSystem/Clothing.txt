@@ -1,0 +1,2 @@
+Shoes,15,Shoes,1,0
+Shirt,10,Shirt,1,0
