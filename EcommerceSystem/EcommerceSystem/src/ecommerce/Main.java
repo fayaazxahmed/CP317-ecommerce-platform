@@ -80,6 +80,7 @@ public class Main {
         loginFrame.setVisible(true);
     }
 
+   
     // ---------- CREATE ACCOUNT ----------
     private void handleCreateAccount() {
         JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
@@ -236,6 +237,11 @@ public class Main {
                     isSeller, () -> {})); // backAction left empty; handled by existing back button
             categoryPanel.add(btn);
         }
+        
+        JButton searchBtn = new JButton("Search All Products");
+        searchBtn.addActionListener(e -> SearchUI.openSearch(storage, isSeller));
+        categoryPanel.add(searchBtn);
+        
         ecommercePanel.add(categoryPanel, BorderLayout.CENTER);
 
         dashFrame.add(ecommercePanel, BorderLayout.CENTER);
