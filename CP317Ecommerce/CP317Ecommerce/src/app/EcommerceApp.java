@@ -219,7 +219,7 @@ public class EcommerceApp {
         List<Product> products = storage.getCategory(categoryIndex);
 
         // Add button
-        JButton addBtn = new JButton("Add");
+        JButton addBtn = new JButton("Add Listing");
         addBtn.setPreferredSize(new Dimension(120, 30));
         addBtn.addActionListener(e -> {
             ListingButtons.addProduct(dashFrame, products, storage, categoryIndex, username);
@@ -263,7 +263,18 @@ public class EcommerceApp {
             }
         });
         
+        // Add to Cart Button
+        JButton cartAddBtn = new JButton("Add to Cart");
+        cartAddBtn.setPreferredSize(new Dimension(120, 30));
+        cartAddBtn.addActionListener(e -> {
+            DashboardProductsUI.SearchResult selectedResult = dashboardProducts.getSelectedProduct();
+            if (selectedResult != null) {
+            } else {
+                JOptionPane.showMessageDialog(dashFrame, "Select a product first!", "No Product Selected", JOptionPane.WARNING_MESSAGE);
+            }
+        });
 
+        listingPanel.add(cartAddBtn);
         listingPanel.add(addBtn);
         listingPanel.add(deleteBtn);
         listingPanel.add(viewBtn);
