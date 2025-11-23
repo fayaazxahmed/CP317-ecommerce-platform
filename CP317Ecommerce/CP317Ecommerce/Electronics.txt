@@ -1,0 +1,10 @@
+Smartphone,699,Latest model smartphone,0,0,,Kyle
+Laptop,1200,15-inch laptop 16GB RAM,0,0,,Lara
+Headphones,150,Noise cancelling headphones,0,0,,Mia
+Smartwatch,250,Water resistant smartwatch,0,0,,Nico
+Tablet,400,10-inch touchscreen tablet,0,0,,Omar
+Camera,550,DSLR camera with 18-55mm lens,0,0,,Pia
+Bluetooth Speaker,80,Portable Bluetooth speaker,0,0,,Quinn
+Monitor,300,27-inch 4K monitor,0,0,,Rex
+Keyboard,70,Mechanical keyboard,0,0,,Sia
+Mouse,40,Wireless mouse,0,0,,Troy

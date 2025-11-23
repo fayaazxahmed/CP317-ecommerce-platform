@@ -1,0 +1,10 @@
+Sofa,500,3-seater fabric sofa,0,0,,Uma
+Dining Table,350,Wooden dining table 6 seats,0,0,,Vera
+Chair,80,Ergonomic office chair,0,0,,Will
+Bed Frame,400,Queen size bed frame,0,0,,Xena
+Mattress,300,Memory foam mattress,0,0,,Yara
+Bookshelf,120,5-tier wooden bookshelf,0,0,,Zane
+Coffee Table,150,Glass top coffee table,0,0,,Ari
+Nightstand,90,2-drawer nightstand,0,0,,Blake
+TV Stand,200,Wooden TV stand 60 inches,0,0,,Cara
+Dresser,250,6-drawer wooden dresser,0,0,,Drew

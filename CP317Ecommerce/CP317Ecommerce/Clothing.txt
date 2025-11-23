@@ -1,0 +1,10 @@
+Jeans,40,Blue denim jeans,4,0,,Alex
+T-Shirt,15,White cotton t-shirt,0,0,,Bella
+Hoodie,50,Black hoodie with zipper,0,0,,Chris
+Jacket,80,Waterproof winter jacket,0,0,,Dana
+Hat,12,Baseball cap adjustable,0,0,,Eli
+Socks,5,Red socks,0,0,,Faye
+Scarf,20,Wool scarf gray,0,0,,Gabe
+Gloves,18,Leather gloves,0,0,,Hana
+Shorts,25,Cargo shorts khaki,0,0,,Ivan
+Sneakers,60,White running sneakers,0,0,,JadeShirt,10,Red shirt,0,0,,S
