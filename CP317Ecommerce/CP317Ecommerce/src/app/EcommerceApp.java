@@ -269,6 +269,9 @@ public class EcommerceApp {
         cartAddBtn.addActionListener(e -> {
             DashboardProductsUI.SearchResult selectedResult = dashboardProducts.getSelectedProduct();
             if (selectedResult != null) {
+                String name = selectedResult.product.getName();
+                int price = Integer.parseInt(selectedResult.product.getPrice());
+                data.CartRepository.addToCart(new CartItem(name, price));
             } else {
                 JOptionPane.showMessageDialog(dashFrame, "Select a product first!", "No Product Selected", JOptionPane.WARNING_MESSAGE);
             }

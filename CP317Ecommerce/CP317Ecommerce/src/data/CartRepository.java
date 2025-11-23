@@ -44,4 +44,19 @@ public class CartRepository {
         }
         return sum;
     }
+
+    // Add new items to cart
+    public static void addToCart(CartItem item) {
+        List<CartItem> items = loadCartItems();  // load existing items
+        items.add(item);                         // add new one
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CART_FILE))) {
+            for (CartItem i : items) {
+                writer.write(i.getName() + "," + i.getPrice());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
