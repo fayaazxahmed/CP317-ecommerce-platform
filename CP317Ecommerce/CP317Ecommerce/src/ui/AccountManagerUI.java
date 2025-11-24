@@ -6,30 +6,27 @@ import util.Helpers;
 import javax.swing.*;
 import java.util.*;
 
-
 public class AccountManagerUI {
 
     /*** CREATE ACCOUNT ***/
-    public static List<User> createAccount(List<User> users, String username, String password, String email, String address) {
+    public static List<User> createAccount(List<User> users, String username, String password, String email, String address, String[] categories) {
         if (users == null) users = new ArrayList<>();
         username = username.trim();
         password = password.trim();
         email = email.trim();
         address = address.trim();
 
-        // Check if username already exists
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 JOptionPane.showMessageDialog(null, "That username is already taken.");
-                return users; // Return unchanged list
+                return users;
             }
         }
 
-        // Add new user
         users.add(new User(username, password, email, address));
-        Helpers.saveUsers(users);
+        Helpers.saveUsers(users, categories);
         JOptionPane.showMessageDialog(null, "Account created for " + username + "!");
-        return users; // Return updated list
+        return users;
     }
 
     /*** LOGIN ***/
@@ -40,20 +37,18 @@ public class AccountManagerUI {
 
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                // Do not show dialog here; let UI handle it to avoid double messages
                 return true;
             }
         }
-        return false; // failed login
+        return false;
     }
 
     /*** DELETE ACCOUNT ***/
-    public static List<User> deleteAccount(List<User> users, String username, String password) {
+    public static List<User> deleteAccount(List<User> users, String username, String password, String[] categories) {
         if (users == null) return new ArrayList<>();
         username = username.trim();
         password = password.trim();
 
-        // Iterate to safely remove user
         User found = null;
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
@@ -64,7 +59,7 @@ public class AccountManagerUI {
 
         if (found != null) {
             users.remove(found);
-            Helpers.saveUsers(users);
+            Helpers.saveUsers(users, categories);
             JOptionPane.showMessageDialog(null, "Account '" + username + "' has been deleted.");
         } else {
             JOptionPane.showMessageDialog(null, "Username/password not found. Cannot delete account.");
