@@ -4,69 +4,54 @@ import domain.CartItem;
 import data.CartRepository;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class CartUI {
-    public static void showCartDialog() {
 
-        // Create dialog window
-        JDialog dialog = new JDialog();
-        dialog.setTitle("Shopping Cart");
-        dialog.setSize(400, 400);
-        dialog.setModal(true);
-        dialog.setLayout(new BorderLayout());
+    /**
+     * Show the cart in a dropdown popup menu (JPopupMenu)
+     * @param parentButton The button the dropdown should appear under
+     */
+    public static void showCartDropdown(JButton parentButton) {
 
-        // Load cart items
+        // Load items
         List<CartItem> items = CartRepository.loadCartItems();
         int total = CartRepository.calculateTotal(items);
 
-        // Build text output
-        StringBuilder sb = new StringBuilder();
+        // Create dropdown menu
+        JPopupMenu menu = new JPopupMenu();
+
         if (items.isEmpty()) {
-            sb.append("Cart is empty.");
+            JMenuItem empty = new JMenuItem("Cart is empty");
+            empty.setEnabled(false);
+            menu.add(empty);
         } else {
+            // Add each item as a menu entry
             for (CartItem item : items) {
-                sb.append(item.getName())
-                  .append(": $")
-                  .append(item.getPrice())
-                  .append("\n");
+                JMenuItem entry = new JMenuItem(item.getName() + " - $" + item.getPrice());
+                entry.setEnabled(false);
+                menu.add(entry);
             }
-            sb.append("\nTotal: $").append(total);
+
+            // Divider
+            menu.addSeparator();
+
+            // Total
+            JMenuItem totalLabel = new JMenuItem("Total: $" + total);
+            totalLabel.setEnabled(false);
+            menu.add(totalLabel);
         }
 
-        // Text area
-        JTextArea text = new JTextArea(sb.toString());
-        text.setEditable(false);
-
-        JScrollPane scrollPane = new JScrollPane(text);
-        scrollPane.setPreferredSize(new Dimension(350, 300));
-        dialog.add(scrollPane, BorderLayout.CENTER);
-
-        // Buttons panel
-        JPanel buttonPanel = new JPanel(new FlowLayout());
-
-        // Clear Cart Button
-        JButton clearBtn = new JButton("Clear Cart");
-        clearBtn.addActionListener(e -> {
+        // ----- CLEAR CART BUTTON -----
+        JMenuItem clearBtn = new JMenuItem("Clear Cart");
+        clearBtn.addActionListener((ActionEvent e) -> {
             CartRepository.clearCart();
-            JOptionPane.showMessageDialog(dialog, "Cart cleared!");
-
-            // Update UI
-            text.setText("Cart is empty.");
+            JOptionPane.showMessageDialog(parentButton, "Cart cleared!");
         });
+        menu.add(clearBtn);
 
-        // Close Button
-        JButton closeBtn = new JButton("Close");
-        closeBtn.addActionListener(e -> dialog.dispose());
-
-        buttonPanel.add(clearBtn);
-        buttonPanel.add(closeBtn);
-
-        dialog.add(buttonPanel, BorderLayout.SOUTH);
-
-        // Show dialog
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
+        // Show dropdown below button
+        menu.show(parentButton, 0, parentButton.getHeight());
     }
 }

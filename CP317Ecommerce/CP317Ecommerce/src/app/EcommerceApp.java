@@ -203,7 +203,7 @@ public class EcommerceApp {
 
         JButton cartBtn = new JButton("Cart");
         cartBtn.setPreferredSize(new Dimension(120, 30));
-        cartBtn.addActionListener(e -> CartUI.showCartDialog());
+        cartBtn.addActionListener(e -> CartUI.showCartDropdown(cartBtn));
         rightPanel.add(cartBtn);
 
      // ---------- Bottom Panel: Add, Delete, View, Bookmark, and Add to Cart ----------
@@ -281,14 +281,12 @@ public class EcommerceApp {
         // Add bottom panel to the dashboard
         dashFrame.add(listingPanel, BorderLayout.SOUTH);
 
-        // Finally show the frame after everything is setup
+        // Show the frame after everything is setup
         dashFrame.setVisible(true);
 
 
         // Add to dashboard
         dashFrame.add(listingPanel, BorderLayout.SOUTH);
-
-        
         dashFrame.setVisible(true);
     }
 
