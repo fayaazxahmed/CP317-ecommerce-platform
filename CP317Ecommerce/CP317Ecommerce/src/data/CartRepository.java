@@ -59,4 +59,13 @@ public class CartRepository {
             e.printStackTrace();
         }
     }
+
+    // Clear cart file
+    public static void clearCart() {
+        try (FileWriter writer = new FileWriter(CART_FILE, false)) {
+            // Write nothing → file becomes empty
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
